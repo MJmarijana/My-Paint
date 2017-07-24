@@ -11,7 +11,6 @@ var mode = document.getElementById('mode');
 var clicks = 0;
 var lastClick = [0, 0];
 var imageLoad = document.getElementById('imageLoad');
-var count = 1;
 
 canvas.width = parseInt(paint_style.getPropertyValue('width'));
 canvas.height = parseInt(paint_style.getPropertyValue('height'));
