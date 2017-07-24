@@ -11,6 +11,7 @@ var mode = document.getElementById('mode');
 var clicks = 0;
 var lastClick = [0, 0];
 var imageLoad = document.getElementById('imageLoad');
+var count = 1;
 
 canvas.width = parseInt(paint_style.getPropertyValue('width'));
 canvas.height = parseInt(paint_style.getPropertyValue('height'));
@@ -47,42 +48,42 @@ canvas.addEventListener('mousedown', function() {
     canvas.addEventListener('mousemove', crayon, false);
     eventRemover(cercle);
     eventRemover(cercleRempli);
-    eventRemover(rectangle);
-    eventRemover(rectangleRempli);
+    eventRemover(carre);
+    eventRemover(carreRempli);
   }
   else if (outil == 'Gomme') {
       canvas.addEventListener('mousemove', gomme, false);
       eventRemover(cercle);
       eventRemover(cercleRempli);
-      eventRemover(rectangle);
-      eventRemover(rectangleRempli);
+      eventRemover(carre);
+      eventRemover(carreRempli);
   }
   else if (outil == 'Cercle') {
       canvas.addEventListener('mousedown', cercle, false);
       eventRemover(cercleRempli);
-      eventRemover(rectangle);
-      eventRemover(rectangleRempli);
+      eventRemover(carre);
+      eventRemover(carreRempli);
 
   }
   else if (outil == 'Cercle Rempli') {
       canvas.addEventListener('mousedown', cercleRempli, false);
       eventRemover(cercle);
-      eventRemover(rectangle);
-      eventRemover(rectangleRempli);
+      eventRemover(carre);
+      eventRemover(carreRempli);
   }
 
-  else if (outil == 'Rectangle') {
-      canvas.addEventListener('mousedown', rectangle, false);
+  else if (outil == 'Carré') {
+      canvas.addEventListener('mousedown', carre, false);
       eventRemover(cercle);
       eventRemover(cercleRempli);
-      eventRemover(rectangleRempli);
+      eventRemover(carreRempli);
 
   }
-  else if (outil == 'Rectangle Rempli') {
-      canvas.addEventListener('mousedown', rectangleRempli, false);
+  else if (outil == 'Carré  Rempli') {
+      canvas.addEventListener('mousedown', carreRempli, false);
       eventRemover(cercle);
       eventRemover(cercleRempli);
-      eventRemover(rectangle);
+      eventRemover(carre);
   }
 
   }, false);
@@ -102,11 +103,11 @@ canvas.addEventListener('mouseup', function() {
       canvas.removeEventListener('mouseup', cercleRempli, false);
   }
 
-  else if (outil == 'Rectangle') {
-      canvas.removeEventListener('mouseup', rectangle, false);
+  else if (outil == 'Carré') {
+      canvas.removeEventListener('mouseup', carre, false);
   }
-  else if (outil == 'Rectangle Rempli') {
-      canvas.removeEventListener('mouseup', rectangleRempli, false);
+  else if (outil == 'Carré  Rempli') {
+      canvas.removeEventListener('mouseup', carreRempli, false);
   }
 
 }, false);
@@ -119,8 +120,9 @@ canvas.addEventListener('click', function() {
     canvas.addEventListener('click', trait, false);
     eventRemover(cercle);
     eventRemover(cercleRempli);
-    eventRemover(rectangle);
-    eventRemover(rectangleRempli);
+    eventRemover(carre);
+    eventRemover(carreRempli);
+
   }
   if (outil != 'Traits') {
     canvas.removeEventListener('click', trait, false);
@@ -145,7 +147,7 @@ var crayon = function() {
 
 var gomme = function() {
 
-  ctx.globalCompositeOperation = 'destination-out';
+    ctx.globalCompositeOperation = 'destination-out';
   ctx.strokeStyle = 'rgba(0, 0, 0 ,1)';
   ctx.lineTo(x, y);
   ctx.stroke();
@@ -187,7 +189,7 @@ var cercleRempli = function(){
 
 };
 
-var rectangle = function(){
+var carre = function(){
 
     lineWidth = document.getElementById("line-width").value;
     ctx.beginPath();
@@ -197,7 +199,7 @@ var rectangle = function(){
 
 };
 
-var rectangleRempli = function(){
+var carreRempli = function(){
 
     lineWidth = document.getElementById("line-width").value;
     ctx.fillStyle = document.getElementById("color").value;
